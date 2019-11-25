@@ -1,0 +1,82 @@
+﻿.demo-card-wide.mdl-card {
+    width: 512px;
+    margin: auto;
+}
+
+.demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 270px;
+    background: url('https://i.ibb.co/TMWtWrv/Screen-Shot-2019-11-24-at-10-21-51-PM.png') center / cover;
+}
+
+.demo-card-wide > .mdl-card__menu {
+    color: #fff;
+}
+
+#introduction {
+    padding-top: 40px;
+}
+
+#welcomeCard {
+    padding-top: 40px;
+}
+
+table {
+    margin: auto;
+    padding-bottom: 100px;
+}
+
+#main-title {
+    color: #019ED5;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#main-title-floridaschools {
+    padding-top: 40px;
+    color: #019ED5;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#secondary-title {
+    color: #019ED5;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#form-title {
+    font-size: 18px;
+}
+
+
+#footer {
+    position: absolute;
+    width: 100%;
+}
+
+#tableId {
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+#form {
+    padding-bottom: 30px;
+}
+
+#surveyExample {
+    padding-top: 30px;
+}
+
+#submitButton {
+    padding-top: 15px;
+}
+
+#firstPic {
+    padding-top: 20px;
+    text-align: center;
+}
+
+#secondPic {
+    text-align: center;
+}

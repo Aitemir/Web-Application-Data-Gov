@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewData["Title"] = "FloridaSchools";
+}
+
+
+@model WebApplicationDataGov.Models.EF_Models.Rootobject
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NHDC</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link href="~/css/StyleSheet.css" type="text/css" rel="stylesheet">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+</head>
+<body>
+    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+        <div class="mdl-tabs__tab-bar">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="mdl-tabs__tab">Main</a>
+            <a asp-area="" asp-controller="Home" asp-action="FloridaSchools" class="mdl-tabs__tab is-active">State Schools</a>
+            <a asp-area="" asp-controller="Home" asp-action="About" class="mdl-tabs__tab">About</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div>
+            <br>
+            <p id="secondary-title">Get To Know Your State With NSDC<br /></p>
+            <br>
+            <p>
+                We collected info on Florida schools specially for you. This is a sample dataset.
+                Our team is now working on development of more features for you to use.
+            </p>
+            <br>
+            <p id="secondary-title">Sample From Your State:<br /></p>
+            <p>
+                Below is the sample of 20 schools from your state. This simple table presents a
+                few useful records with student size, school identification, and name.
+                <br />
+            </p>
+        </div>
+    </div>
+
+    </div>
+
+    <div class="container" id="tableId" style="overflow-x:auto;">
+        <table class="mdl-data-table mdl-js-data-table">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">ID</th>
+                    <th class="mdl-data-table__cell--non-numeric">Size</th>
+                    <th class="mdl-data-table__cell--non-numeric">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.results)
+                {
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            @Html.DisplayFor(modelItem => item.size)
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <canvas id="barchart" width="300" height="150"></canvas>
+    
+            <script>           
+                new Chart(document.getElementById("barchart"), {
+                type: 'bar',
+                data: {
+                    labels: ["UF-Online", "FL Academy", "FC", "USF-S-M",
+                        "USF-M", "SCF-M-S", "USF-SP",
+                        "FCCT", "FCCM", "FCC"],
+
+                 datasets: [
+                              {
+                     label: "Student Population",
+                         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#006d86",
+                         "#ffc428", "#3b2369", "#c31fd1", "#ace46b"],
+                            data: [2735, 153, 505, 1868, 30918, 8493, 4162, 457, 521, 650]
+                        }
+                    ]
+                 },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'As of 2017 based on collegescorecard.ed.gov'
+                    }
+                }
+            });
+            
+            </script>
+        
+    </div>
+    <footer class="mdl-mini-footer" id="footer">
+        <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">NSDC</div>
+            <ul class="mdl-mini-footer__link-list">
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Privacy & Terms</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
+
+

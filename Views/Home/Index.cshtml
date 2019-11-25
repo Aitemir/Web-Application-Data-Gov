@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model WebApplicationDataGov.Models.EF_Models.Rootobject
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NHDC</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link href="~/css/StyleSheet.css" type="text/css" rel="stylesheet">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</head>
+<body>
+    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+        <div class="mdl-tabs__tab-bar">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="mdl-tabs__tab is-active">Main</a>
+            <a asp-area="" asp-controller="Home" asp-action="FloridaSchools" class="mdl-tabs__tab">State Schools</a>
+            <a asp-area="" asp-controller="Home" asp-action="About" class="mdl-tabs__tab">About</a>
+        </div>
+    </div>
+    <div class="container" id="welcomeCard">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text"><b>National School Data Collection</b></h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                The NSDC filtered datasets help thousands of students from all over the world to choose universities - just click on <b>Get Started</b>
+                to explore schools
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a href="survey.html" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    Get Started
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="container" id="introduction">
+        <div>
+            <p id="main-title">National School Data Collection<br /></p>
+        </div>
+        <div>
+            <p>
+                The NSDC organization got its start 10 years ago. At NSDC, we are trying to collect data about schools across the United States from various resources.
+                We are striving to provide valuable info and statistics and measure student success and education level. At this point,
+                we are consuming data from API provided by ... and let the our viewers have access to filtered and sorted data.
+                We are based in Florida and 
+            </p>
+        </div>
+        <div>
+            <p>
+                In order to participate in the survey, please fill out the the form and click submit under the survey tab.
+            </p>
+            <br>
+            <p id="secondary-title">Sample of 20:<br /></p>
+            <p>
+                Below is an example of the sample 20 schools that are being 
+                predominant in the list of 2017. This simple table presents a 
+                few useful records with student size, school identification, and name.
+                <br />
+            </p>
+        </div>
+    </div>
+
+    </div>
+    
+    <div class="container" id="tableId" style="overflow-x:auto;">
+        <table class="mdl-data-table mdl-js-data-table">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">ID</th>
+                    <th class="mdl-data-table__cell--non-numeric">Size</th>
+                    <th class="mdl-data-table__cell--non-numeric">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.results)
+                {
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            @Html.DisplayFor(modelItem => item.size)
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <a id="dbopt" asp-controller="Home" asp-action="PopulateSchools">
+            <p><b>Save to the database</b></p>
+        </a>
+
+    </div>
+    <footer class="mdl-mini-footer" id="footer">
+        <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">NSDC</div>
+            <ul class="mdl-mini-footer__link-list">
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Privacy & Terms</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
