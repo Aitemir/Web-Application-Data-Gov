@@ -80,7 +80,7 @@ namespace WebApplicationDataGov.Controllers
             Rootobject rootobject = GetSchools();
 
             TempData["Schools"] = JsonConvert.SerializeObject(rootobject);
-
+            
             rootobject = JsonConvert.DeserializeObject<Rootobject>(TempData["Schools"].ToString());
 
             foreach (School school in rootobject.results)
